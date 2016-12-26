@@ -1,0 +1,25 @@
+<h1>
+  {{title}}
+
+  <form>
+    <input type="text" name="color" #c>
+    <input type="text" name="width" #w>
+    <input type="submit">
+  </form>
+
+
+  <span
+    [ngStyle]="{
+      color:c.value
+    }"
+
+    [style.border]="w.value + 'px solid '+c.value"
+    [ngClass]="{bordered:true, whii:false}"
+    class="ttt pre"
+    ngNonBindable
+  >
+    asdf {{ '\{\{ c \}\}' }}
+  </span>
+
+  <!--<span [style.color]="colorinput.value">asdf</span>-->
+</h1>

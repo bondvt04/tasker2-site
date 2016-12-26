@@ -1,0 +1,49 @@
+<div class="ui raised segment">
+  <h2 class="ui header">Demo Form: Sku with Builder</h2>
+  <form [formGroup]="myForm"
+        (ngSubmit)="onSubmit(myForm.value)"
+        class="ui form">
+    <div class="field" [class.error]="!sku.valid && sku.touched">
+      <label for="skuInput">SKU</label>
+      <input type="text"
+             id="skuInput"
+             placeholder="SKU"
+             [formControl]="myForm.controls['sku']">
+
+      <input type="text"
+             id="titleInput"
+             placeholder="title"
+             [formControl]="myForm.controls['title']"
+             (ngModel)="titleVal">
+
+      <input type="text"
+             id="productNameInput"
+             placeholder="Product Name"
+             [formControl]="myForm.get('productName')"
+             [(ngModel)]="productName"><!-- two-way data binding -->
+    </div>
+
+    <div *ngIf="!sku.valid && sku.touched" class="ui error message">SKU is invalid</div>
+    <div *ngIf="sku.hasError('required') && sku.touched" class="ui error message">SKU is required1</div>
+    <div *ngIf="!myForm.valid && myForm.touched" class="ui error message">form is invalid</div>
+    <div *ngIf="myForm.hasError('required', 'sku')" class="error">SKU is required2</div>
+    <div *ngIf="myForm.controls.sku.hasError('required')" class="error">SKU is required3</div>
+    <div *ngIf="myForm.hasError('required')" class="error">something is required</div>
+    <div *ngIf="myForm.controls.title.hasError('invalidSku')" class="error">title has "invalidSku" error</div>
+
+    <button type="submit" class="ui button">Submit</button>
+  </form>
+
+  <div class="ui info message">
+    The product name is: {{productName}}
+  </div>
+
+  <div class="ui info message">
+    The title is: {{myForm.controls.title.value}}
+  </div>
+
+  <div class="ui info message">
+    The titleVal is: {{titleVal}}
+  </div>
+
+</div>

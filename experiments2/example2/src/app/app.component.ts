@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Article} from "./article/article.model";
+import {Promise} from "es6-promise";
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,17 @@ export class AppComponent {
     title.value = '';
     link.value = '';
     return false;
+  }
+
+  getStr() {
+    console.log('qwer');
+    // return new Promise((resolve, reject) => {
+    //   resolve('asdf');
+    // });
+  }
+
+  onSayHo(event) {
+    console.log(event);
   }
 
   public onButtonHover(e) {

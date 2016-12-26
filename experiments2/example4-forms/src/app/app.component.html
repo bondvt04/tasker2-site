@@ -1,0 +1,42 @@
+<div class="ui raised segment">
+  <h2 class="ui header">Demo Form: Sku</h2>
+  <form #f="ngForm"
+        (ngSubmit)="onSubmit(f)"
+        class="ui form">
+    <div class="field">
+      <label for="skuInput">SKU</label>
+      <input type="text"
+             id="skuInput"
+             placeholder="SKU"
+             name="sku" ngModel>
+    </div>
+    <button type="submit" class="ui button">Submit</button>
+  </form>
+
+
+
+  <form>
+    <input type="text" name="color" #c>
+    <input type="text" name="width" #w>
+    <input type="submit">
+  </form>
+
+
+  <span
+    [ngStyle]="{
+      color:c.value
+    }"
+    [style.border]="w.value + 'px solid '+c.value"
+  >
+    asdf
+  </span>
+
+
+</div>
+
+
+<br><br><br><br><br><br><br><br>
+<div [style]="{border: '1px solid red'}" >
+  <app-form-builder></app-form-builder>
+</div>
+

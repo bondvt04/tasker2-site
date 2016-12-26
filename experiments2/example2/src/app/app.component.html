@@ -17,10 +17,10 @@
   </button>
 </form>
 
-
 <div class="ui grid posts">
   <app-article
     *ngFor="let article of getSortedArticles()"
-    [article]="article">
-  </app-article>
+    [article]="article"
+    (sayHo)="onSayHo($event)"
+  ></app-article>
 </div>
