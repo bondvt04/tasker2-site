@@ -15,7 +15,25 @@ import {
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import {HashLocationStrategy} from "@angular/common";
+import {PathLocationStrategy, HashLocationStrategy, LocationStrategy} from "@angular/common";
+import { SearchComponent } from './search/search.component';
+import { ArtistComponent } from './artist/artist.component';
+import { TrackComponent } from './track/track.component';
+import { AlbumComponent } from './album/album.component';
+import { LoginComponent } from './login/login.component';
+import {AuthService} from "./auth.service";
+import { ProtectedComponent } from './protected/protected.component';
+import {LoggedInGuard} from "../guards/loggedIn.guard";
+//import {ProductsComponent} from "./products/products.component";
+
+import {
+  routes as childRoutes,
+  ProductsComponent,
+  ByIdComponent,
+  InterestComponent,
+  MainComponent,
+  SportifyComponent
+} from './products/products.component';
 
 
 const routes: Routes = [
@@ -24,6 +42,19 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'contactus', redirectTo: 'contact' },
+
+
+  { path: 'search', component: SearchComponent },
+  { path: 'artists/:id', component: ArtistComponent },
+  { path: 'tracks/:id', component: TrackComponent },
+  { path: 'albums/:id', component: AlbumComponent },
+
+  { path: 'login', component: LoginComponent },
+  { path: 'protected', component: ProtectedComponent,
+    canActivate: [LoggedInGuard]},
+
+  { path: 'products', component: ProductsComponent,
+    children: childRoutes }
 ];
 
 // console.log(RouterModule.forRoot(routes));
@@ -34,7 +65,19 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    SearchComponent,
+    ArtistComponent,
+    TrackComponent,
+    AlbumComponent,
+    LoginComponent,
+    ProtectedComponent,
+    ProductsComponent,
+
+    ByIdComponent,
+    InterestComponent,
+    MainComponent,
+    SportifyComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +86,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    // { provide: LocationStrategy, useClass: PathLocationStrategy }
+    AuthService,
+    LoggedInGuard
   ],
   bootstrap: [AppComponent]
 })
