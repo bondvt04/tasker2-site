@@ -13,10 +13,11 @@ import {
 import {AppState} from "./app-state";
 import { counterReducer } from './counter-reducer';
 
-import { OpaqueToken } from '@angular/core';
 import { CounterComponent } from './counter/counter.component';
 
-export const AppStore = new OpaqueToken('App.store');
+import { AppStore } from './app-store';
+
+
 
 
 //let store: Store<AppState> = createStore<AppState>(counterReducer);
@@ -32,6 +33,11 @@ let store: Store<AppState> = createStore<AppState>(
   devtools
 );
 
+export function asdf() {
+  return store;
+}
+
+
 
 @NgModule({
   declarations: [
@@ -44,7 +50,13 @@ let store: Store<AppState> = createStore<AppState>(
     HttpModule
   ],
   providers: [
-    {provide: AppStore, useValue: store }
+    {
+      provide: AppStore,
+      useFactory: asdf,
+      deps: []
+    }
+
+    //{provide: AppStore, useValue: store }
   ],
   bootstrap: [AppComponent]
 })

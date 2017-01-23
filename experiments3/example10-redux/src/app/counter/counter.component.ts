@@ -1,11 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Store } from 'redux';
-import { AppStore } from '../app.module';
+import { AppStore } from '../app-store';
 import { AppState } from '../app-state';
 import * as CounterActions from '../counter-action-creators';
 
 @Component({
-  selector: 'app-counter',
+  selector: 'counter-component',
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.css']
 })
