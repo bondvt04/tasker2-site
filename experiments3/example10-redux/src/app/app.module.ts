@@ -13,23 +13,39 @@ import {
 import {AppState} from "./app-state";
 import { counterReducer } from './counter-reducer';
 
+import { OpaqueToken } from '@angular/core';
+import { CounterComponent } from './counter/counter.component';
 
-let store: Store<AppState> = createStore<AppState>(counterReducer);
+export const AppStore = new OpaqueToken('App.store');
+
+
+//let store: Store<AppState> = createStore<AppState>(counterReducer);
+
+
+
 let devtools: StoreEnhancer<AppState> =
   window['devToolsExtension'] ?
   window['devToolsExtension']() : f => f;
 
+let store: Store<AppState> = createStore<AppState>(
+  counterReducer,
+  devtools
+);
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    {provide: AppStore, useValue: store }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
