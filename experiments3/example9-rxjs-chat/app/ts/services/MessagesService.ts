@@ -17,7 +17,7 @@ export class MessagesService {
   messages: Observable<Message[]>;
 
   // `updates` receives _operations_ to be applied to our `messages`
-  // it's a way we can perform changes on *all* messages (that are currently 
+  // it's a way we can perform changes on *all* messages (that are currently
   // stored in `messages`)
   updates: Subject<any> = new Subject<any>();
 
@@ -99,7 +99,7 @@ export class MessagesService {
       });
   }
 }
-
+//
 export var messagesServiceInjectables: Array<any> = [
   MessagesService
 ];
