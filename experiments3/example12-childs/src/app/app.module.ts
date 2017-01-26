@@ -4,14 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { MyDirDirective } from './my-dir.directive';
-import { TttComponent } from './ttt/ttt.component';
+import { TabComponent } from './tab/tab.component';
+import { TabsetComponent } from './tabset/tabset.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyDirDirective,
-    TttComponent
+    TabComponent,
+    TabsetComponent
   ],
   imports: [
     BrowserModule,

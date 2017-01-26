@@ -1,6 +1,7 @@
 import {Directive, ElementRef, Input} from '@angular/core';
 
 @Directive({
+  //
   selector: '[appMyDir]',
   exportAs: 'eee',
   host: {

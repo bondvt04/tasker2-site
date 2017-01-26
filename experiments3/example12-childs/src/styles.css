@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+a.item {
+  border: 1px solid red;
+}
+
+app-tab .tab.segment{
+  display: none;
+}
+
+app-tab .tab.segment.active{
+  display: block;
+}
